@@ -1,5 +1,5 @@
 (1..100).each do |number|
-  Task.create(status: 'test status ' + number.to_s, content: 'test content ' + number.to_s)
+  Message.create(status: 'test status ' + number.to_s, content: 'test content ' + number.to_s)
 end
 
 # This file should contain all the record creation needed to seed the database with its default values.
