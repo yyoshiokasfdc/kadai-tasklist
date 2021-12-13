@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    # @pagy, @tasks = pagy(Task.order(id: :desc), items: 3)
+    @tasks = Task.all
+    if logged_in?
+      @task = current_user.tasks.build
+      @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
+    end
   end
   
   def show
@@ -23,7 +27,7 @@ class TasksController < ApplicationController
     else
       @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
       flash[:danger] = 'タスクが作成できません'
-      render 'toppages/index'
+      render 'tasks/index'
     end
   end
   

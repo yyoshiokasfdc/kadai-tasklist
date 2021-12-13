@@ -52,3 +52,5 @@ group :production do
 end
 
 gem 'pagy'
+
+
