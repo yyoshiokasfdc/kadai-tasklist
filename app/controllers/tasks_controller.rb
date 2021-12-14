@@ -5,10 +5,8 @@ class TasksController < ApplicationController
   
   def index
     @tasks = Task.all
-    if logged_in?
-      @task = current_user.tasks.build
-      @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
-    end
+    @task = current_user.tasks.build
+    @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
   end
   
   def show
