@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post 'tasks', to: 'tasks#create'
   put 'tasks/:id', to: 'tasks#update'
   delete 'tasks/:id', to: 'tasks#destroy'
+  get 'tasks', to: 'tasks#index'
+  get 'tasks/:id/edit', to: 'tasks#edit'
 
-  resources :tasks, only: [:create, :destroy]
+  resources :tasks
 end

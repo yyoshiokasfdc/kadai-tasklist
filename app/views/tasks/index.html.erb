@@ -3,9 +3,8 @@
     <aside class="col-sm-4">
       <%= form_with(model: @task) do |f| %>
         <div class="mb-3">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+          <%= render 'form', task: @task %>
         </div>
-        <%= f.submit 'Post', class: 'btn btn-primary w-100' %>
       <% end %>
     </aside>
     <div class="col-sm-8">
@@ -44,6 +43,3 @@
   </table>
 
 <% end %>
-
-<%= link_to '新規タスク作成', tasks_path, class: "btn btn-primary" %>
-

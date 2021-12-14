@@ -12,6 +12,7 @@ class TasksController < ApplicationController
   end
   
   def show
+    set_task
   end
   
   def new
@@ -35,6 +36,7 @@ class TasksController < ApplicationController
   end
   
   def update
+    @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:success] = 'タスクが編集されました'
       redirect_to @task
@@ -45,9 +47,11 @@ class TasksController < ApplicationController
   end
   
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
     flash[:success] = 'タスクが削除されました'
-    redirect_back(fallback_location: root_path)
+    redirect_to root_url
+    #redirect_back(fallback_location: root_path)
   end
 
   private 
