@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     else
       @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
       flash[:danger] = 'タスクが作成できません'
-      render 'tasks/index'
+      render :new
     end
   end
   
