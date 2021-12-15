@@ -3,12 +3,10 @@ class TasksController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all
     @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
   end
   
   def show
-    correct_user
   end
   
   def new
@@ -32,7 +30,6 @@ class TasksController < ApplicationController
   end
   
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:success] = 'タスクが編集されました'
       redirect_to @task
@@ -43,7 +40,6 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     flash[:success] = 'タスクが削除されました'
     redirect_to root_url
